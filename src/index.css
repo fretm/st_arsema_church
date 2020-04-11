@@ -49,16 +49,19 @@
   font-family: monospace;
   z-index: 1;
 }
-
+.section-1 .row .col-md-6 .panel h4,
 .section-1 .row .col-md-6 .panel h1 {
   font-weight: bold;
   padding: 0.4em 0;
   font-size: 2em;
+  color: rgba(0, 0, 0, 0.6);
+  font-family: monospace;
 }
 
 .section-1 .row .col-md-6 .panel p {
-  font-size: 0.9em;
-  color: rgba(0, 0, 0, 0.5);
+  font-size: 1.2em;
+  color: rgba(0, 0, 0, 0.6);
+  font-family: monospace;
 }
 
 .leaderwelcome {

@@ -4,9 +4,31 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+import thunk from 'redux-thunk';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+
+import bibleVerseReducer from './stores/biblereducer';
+
+const logMiddleware = (store) => {
+  return (next) => {
+    return (action) => {
+      return next(action);
+    };
+  };
+};
+
+const rootReducer = combineReducers({
+  verses: bibleVerseReducer,
+});
+
+const store = createStore(rootReducer, applyMiddleware(logMiddleware, thunk));
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

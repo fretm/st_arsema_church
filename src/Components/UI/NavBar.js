@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class NavBar extends Component {
   render() {
     return (
       <nav className="navbar sticky-top navbar-light bg-light navbar-expand-lg">
-        <a className="navbar-brand" href="#">
-          Eotc
-        </a>
+        <Link className="navbar-brand" to="/">
+          <i class="fas fa-church fa-2x"></i>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
