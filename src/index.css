@@ -1,6 +1,6 @@
 .banner {
   width: 100%;
-  height: 55vmin;
+  height: 45vmin;
   background: url('../src//assets/nav.jpg');
   background-position: -24rem -19rem;
   background-size: 150%;
@@ -10,7 +10,7 @@
   background: rgba(0, 0, 0, 0.7);
   height: 100%;
   width: 100%;
-  padding-top: 19vmin;
+  padding-top: 15vmin;
 }
 .banner .content > h1 {
   font-family: monospace;
@@ -132,4 +132,7 @@
 
 .page-footer {
   background-color: ivory;
+  bottom: 0;
+
+  width: 100%;
 }
