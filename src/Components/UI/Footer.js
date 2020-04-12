@@ -3,6 +3,7 @@ import React from 'react';
 export default function Footer() {
   return (
     <footer className="page-footer font-small pt-4">
+      <hr/>
       <div className="container">
         <ul className="list-unstyled list-inline text-center">
           <li className="list-inline-item" style={{ color: '#3B5998' }}>
@@ -25,7 +26,7 @@ export default function Footer() {
 
       <div className="footer-copyright text-center py-3">
         © 2020 Copyright:
-        <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
+        <a href="/"> HashCoders</a>
       </div>
     </footer>
   );

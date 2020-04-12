@@ -21,6 +21,36 @@
   font-family: monospace;
   color: antiquewhite;
 }
+.servicebanner {
+  width: 100%;
+  height: 25vmin;
+  background: url('../src//assets/nav.jpg');
+  background-position: -24rem -19rem;
+  background-size: 150%;
+  position: relative;
+}
+.servicebanner .content {
+  background: rgba(0, 0, 0, 0.7);
+  height: 100%;
+  width: 100%;
+  padding-top: 19vmin;
+}
+
+.servicebanner .content {
+  background: rgba(0, 0, 0, 0.7);
+  height: 100%;
+  width: 100%;
+  padding-top: 10vmin;
+}
+.servicebanner .content > h1 {
+  font-family: monospace;
+  font-size: 4vmin;
+  color: whitesmoke;
+}
+.servicebanner .content > p {
+  font-family: monospace;
+  color: antiquewhite;
+}
 
 /* Daily verse section*/
 

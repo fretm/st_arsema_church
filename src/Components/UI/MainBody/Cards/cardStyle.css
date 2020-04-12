@@ -1,5 +1,6 @@
 .card {
   width: 20rem;
+  border-radius: 0.5em;
 }
 
 .maincard .card:hover {

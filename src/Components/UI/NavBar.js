@@ -33,6 +33,11 @@ class NavBar extends Component {
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">
+                SHOP
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#">
                 GET CONNECTED
               </a>
             </li>
