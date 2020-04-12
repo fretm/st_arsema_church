@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import bibleImg from '../../../assets/bible.jpg';
 import Banner from './Banner';
-import Sections from './Sections/Sections';
+import DailyVerse from './DailyVerse';
+import MainBody from '../MainBody/MainBody';
+
 class Header extends Component {
   render() {
     return (
       <div>
         <Banner />
-        <Sections />
+        <DailyVerse />
+        <MainBody />
       </div>
-     
     );
   }
 }

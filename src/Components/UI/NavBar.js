@@ -6,7 +6,7 @@ class NavBar extends Component {
     return (
       <nav className="navbar sticky-top navbar-light bg-light navbar-expand-lg">
         <Link className="navbar-brand" to="/">
-          <i class="fas fa-church fa-2x"></i>
+          <i className="fas fa-church fa-2x"></i>
         </Link>
         <button
           className="navbar-toggler"
