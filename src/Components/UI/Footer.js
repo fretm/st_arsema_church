@@ -2,9 +2,9 @@ import React from 'react';
 
 export default function Footer() {
   return (
-    <footer className="page-footer font-small pt-4">
-      <hr/>
-      <div className="container">
+    <footer className="page-footer font-small mt-5">
+      <div className="container-fluid">
+        <hr />
         <ul className="list-unstyled list-inline text-center">
           <li className="list-inline-item" style={{ color: '#3B5998' }}>
             <i className="fab fa-facebook fa-2x"></i>

@@ -1,6 +1,8 @@
 import * as actionType from './actionType';
+
 import axios from 'axios';
 
+//action for storing bible verse
 export const bibleVerseAction = (verse) => {
   return {
     type: actionType.verse,
@@ -8,6 +10,8 @@ export const bibleVerseAction = (verse) => {
   };
 };
 
+
+//action creator for fetching bible verse
 export const asyncVerseFetch = () => {
   let versenumber = Math.ceil(Math.random() * 20);
   return (dispatch) => {

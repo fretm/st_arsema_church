@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './cardStyle.css';
+
 export default function Card(props) {
   return (
     <div className='maincard'>
@@ -15,9 +17,9 @@ export default function Card(props) {
             deserunt quidem impedit ut cumque eveniet ad praesentium maxime illo
             temporibus.
           </p>
-          <a href="#" className="btn btn-outline-success">
+          <Link to="#" className="btn btn-outline-success">
             Read more ...
-          </a>
+          </Link>
         </div>
       </div>
     </div>

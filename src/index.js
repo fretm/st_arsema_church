@@ -9,6 +9,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 
 import bibleVerseReducer from './stores/biblereducer';
+import authenticationReducer from './stores/authenticationReducer';
 
 const logMiddleware = (store) => {
   return (next) => {
@@ -20,6 +21,7 @@ const logMiddleware = (store) => {
 
 const rootReducer = combineReducers({
   verses: bibleVerseReducer,
+  auth: authenticationReducer,
 });
 
 const store = createStore(rootReducer, applyMiddleware(logMiddleware, thunk));

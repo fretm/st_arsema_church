@@ -7,7 +7,7 @@ export default function ChurchServices() {
     <div className="container mt-5 mb-5">
       <div className="card-deck ">
         <div className="card border-0" style={{ width: '18rem' }}>
-          <img className="card-img" src={welcome} alt="Card image cap" />
+          <img className="card-img" src={welcome} alt="Approaching the building" />
           <div className="card-body text-center">
             <h6 className="card-title">Approaching the building...</h6>
             <p className="card-text">
@@ -21,7 +21,7 @@ export default function ChurchServices() {
           </div>
         </div>
         <div className="card border-0" style={{ width: '18rem' }}>
-          <img className="card-img" src={churchdress} alt="Card image cap" />
+          <img className="card-img" src={churchdress} alt="What should I wear" />
           <div className="card-body text-center">
             <h6 className="card-title">What should I wear?</h6>
             <p className="card-text">
@@ -32,7 +32,7 @@ export default function ChurchServices() {
           </div>
         </div>
         <div className="card border-0" style={{ width: '18rem' }}>
-          <img className="card-img" src={kidsactivity} alt="Card image cap" />
+          <img className="card-img" src={kidsactivity} alt="What is there for kids" />
           <div className="card-body text-center">
             <h6 className="card-title">What is there for kids?</h6>
             <p className="card-text">

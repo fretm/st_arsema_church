@@ -22,50 +22,61 @@ class NavBar extends Component {
         <div className="collapse navbar-collapse p" id="navbarNav">
           <ul className="navbar-nav ml-auto">
             <li className="nav-item active">
-              <a className="nav-link" href="#">
+              <Link className="nav-link" to="/">
                 HOME <span className="sr-only">(current)</span>
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <Link className="nav-link" to="/">
                 I'M NEW
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
-                SHOP
-              </a>
+              <Link className="nav-link" to="/store">
+                STORE
+              </Link>
             </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                GET CONNECTED
-              </a>
-            </li>
+
             <li className="nav-item dropdown">
               <div className="dropdown">
-                <a className="nav-link" href="#">
+                <Link className="nav-link" to="#">
                   FORMS
-                </a>
+                </Link>
                 <div className="dropdown-content">
-                  <a href="#">forms 1</a>
-                  <a href="#">forms 2</a>
+                  <Link to="#">forms 1</Link>
+                  <Link to="#">forms 2</Link>
                 </div>
               </div>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <Link className="nav-link" to="#">
                 CONTACT US
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <Link className="nav-link" to="#">
                 DONATE
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
-                LIVE
-              </a>
+              <Link className="nav-link" to="#">
+                <i
+                  className="fa fa-play "
+                  style={{ color: '#C31A1E' }}
+                  aria-hidden="true"
+                >
+                  {' '}
+                  LIVE
+                </i>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/auth">
+                <i className="fas fa-user " aria-hidden="true">
+                  {' '}
+                  LOGIN
+                </i>
+              </Link>
             </li>
           </ul>
         </div>

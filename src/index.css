@@ -131,8 +131,39 @@
 }
 
 .page-footer {
-  background-color: ivory;
+  background-color: whitesmoke;
   bottom: 0;
 
   width: 100%;
+}
+
+/* cards */
+.login .card {
+  background-color: transparent;
+  width: 40rem;
+  font-family: monospace;
+}
+.login h5 {
+  font-family: monospace;
+}
+.login img {
+  opacity: 0.8;
+  width: 80%;
+  border-radius: 0.5em;
+}
+
+.login .card-text {
+  font-size: 0.9rem;
+  padding: 0.4rem 1.9rem;
+}
+
+.login .card .col-md-8 {
+  top: 4vmin;
+  background: white;
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.2);
+  font-family: monospace;
+  border-radius: 0.7em;
+}
+.login {
+  margin-top: -12vmin;
 }
