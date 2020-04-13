@@ -6,12 +6,17 @@ import NavBar from '../Components/UI/NavBar';
 import Header from '../Components/UI/Headers/Header';
 import Footer from '../Components/UI/Footer';
 
+import * as actionType from '../stores/actionType';
 import MainBody from '../Components/UI/MainBody/MainBody';
 import ChurchStore from '../Components/UI/ChurchStore/ChurchStore';
 import Auth from '../Components/UI/Auth/Auth';
 
 class Main extends Component {
+  componentDidMount() {
+    this.props.setTokenFromCookie();
+  }
   render() {
+
     return (
       <Fragment>
         <NavBar />
@@ -34,5 +39,10 @@ const mapStateToProps = (state) => {
     ...state.auth,
   };
 };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setTokenFromCookie: () => dispatch({ type: actionType.setToken }),
+  };
+};
 
-export default connect(mapStateToProps)(Main);
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import bibleImg from '../../../assets/dailyverse.jpg';
-import * as actionType from '../../../stores/actions';
+import * as actionCreator from '../../../stores/actions';
 
 class DailyVerse extends Component {
   //fetching the bibleverses and store it on the redux state
@@ -10,7 +10,6 @@ class DailyVerse extends Component {
     this.props.getBibleVerses();
   }
   render() {
-    console.log(this.props);
     return (
       <div className="dailyverse">
         <div className="container-fluid d-flex justify-content-center">
@@ -25,13 +24,13 @@ class DailyVerse extends Component {
                   <p className="card-text text-center">
                     {this.props.bibleverse.text}
                   </p>
-                  <p className="card-text float-right">
+                  <div className="card-text float-right">
                     <blockquote className="blockquote">
-                      <footer class="blockquote-footer">
+                      <footer className="blockquote-footer">
                         <cite> {this.props.bibleverse.verse}</cite>
                       </footer>
                     </blockquote>
-                  </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -43,13 +42,12 @@ class DailyVerse extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return { bibleverse: state.verses.bibleverse };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getBibleVerses: () => dispatch(actionType.asyncVerseFetch()),
+    getBibleVerses: () => dispatch(actionCreator.asyncVerseFetch()),
   };
 };
 

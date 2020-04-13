@@ -37,7 +37,7 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'login':
+    case actionType.loginInput:
       const copyOfLoginForm = { ...state.loginForm };
       const copyOfElement = { ...copyOfLoginForm[action.insertedField] };
       copyOfElement.isValid = validate(
@@ -49,8 +49,11 @@ const reducer = (state = initialState, action) => {
       copyOfElement.elemConfig = copyOfElementConfig;
       copyOfLoginForm[action.insertedField] = copyOfElement;
       return { ...state, loginForm: copyOfLoginForm };
-    case 'loginSubmit':
-      return { ...state, loginMessage: 'wrong password', user: 'bikale' };
+    case actionType.login:
+      return { ...state, user: action.user, loginMessage: action.loginMessage };
+    case actionType.setToken:
+      return { ...state, user: document.cookie.split('=')[1] }; // assigning the cookie token to the state
+
     default:
       return state;
   }

@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import * as actionCreator from '../../../stores/actions';
 import Input from '../../Input/Input';
 
 class Auth extends Component {
   render() {
-    console.log(this.props);
-
     let loginFormArray = [];
     for (let key in this.props.loginForm) {
       loginFormArray.push({
@@ -65,10 +64,14 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onInputEventHandler: (event, insertedField) =>
-      dispatch({ type: 'login', event: event, insertedField: insertedField }),
+      dispatch({
+        type: 'loginInput',
+        event: event,
+        insertedField: insertedField,
+      }),
     onLoginSubmitHandler: (e) => {
       e.preventDefault();
-      dispatch({ type: 'loginSubmit' });
+      dispatch(actionCreator.asyncLoginAuthentication());
     },
   };
 };
