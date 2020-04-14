@@ -24,8 +24,8 @@
 .servicebanner {
   width: 100%;
   height: 25vmin;
-  background: url('../src//assets/nav.jpg');
-  background-position: -24rem -19rem;
+  background: url('../src//assets/crosssign.jpg');
+  background-position: -24rem -55rem;
   background-size: 150%;
   position: relative;
 }
@@ -166,4 +166,24 @@
 }
 .login {
   margin-top: -12vmin;
+}
+
+/* churchshop cards */
+.churchshop .card {
+  background-color: transparent;
+  width: 20rem;
+  font-family: monospace;
+}
+.churchshop img {
+  height: 20rem;
+  width: 15rem;
+}
+
+.shopdetail {
+  font-family: monospace;
+}
+
+/* start rating */
+.checked {
+  color: orange;
 }

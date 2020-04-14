@@ -10,13 +10,13 @@ import * as actionType from '../stores/actionType';
 import MainBody from '../Components/UI/MainBody/MainBody';
 import ChurchStore from '../Components/UI/ChurchStore/ChurchStore';
 import Auth from '../Components/UI/Auth/Auth';
+import ShopItemDetail from '../Components/UI/ChurchStore/ShopItemDetail';
 
 class Main extends Component {
   componentDidMount() {
     this.props.setTokenFromCookie();
   }
   render() {
-
     return (
       <Fragment>
         <NavBar />
@@ -24,6 +24,7 @@ class Main extends Component {
         <Switch>
           <Route path="/" exact component={MainBody} />
           <Route path="/store" exact component={ChurchStore} />
+          <Route path="/itemdetail/:itemid" exact component={ShopItemDetail} />
           {this.props.user && <Redirect from="/auth" to="/" />}
           <Route path="/auth" exact component={Auth} />
           <Route path="/addbibleverse" exact component={ChurchStore} />

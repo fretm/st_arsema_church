@@ -72,10 +72,19 @@ class NavBar extends Component {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/auth">
-                <i className="fas fa-user " aria-hidden="true"></i>{' '}
-                {!this.props.user ? <>LOGIN</> : <>LOGOUT</>}
-              </Link>
+              {!this.props.user ? (
+                <Link className="nav-link" to="/auth">
+                  <i className="fas fa-user " aria-hidden="true"></i> LOGIN
+                </Link>
+              ) : (
+                <Link
+                  className="nav-link"
+                  onClick={this.props.onLogoutEventHandler}
+                  to="/"
+                >
+                  <i className="fas fa-user " aria-hidden="true"></i> LOGOUT
+                </Link>
+              )}
             </li>
           </ul>
         </div>
@@ -89,4 +98,10 @@ const mapStateToProps = (state) => {
     ...state.auth,
   };
 };
-export default connect(mapStateToProps)(NavBar);
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onLogoutEventHandler: () => dispatch({ type: 'logout' }),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

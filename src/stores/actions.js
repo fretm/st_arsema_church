@@ -15,7 +15,9 @@ export const asyncVerseFetch = () => {
   let versenumber = Math.ceil(Math.random() * 20);
   return (dispatch) => {
     axios
-      .get('http://localhost:5000/api/v1/church/bibleverses')
+      .get('http://localhost:5000/api/v1/church/bibleverses', {
+        withCredentials: true,
+      })
       .then((res) => {
         dispatch(bibleVerseAction(res.data.data[versenumber]));
       })
@@ -55,6 +57,50 @@ export const asyncLoginAuthentication = () => {
       })
       .catch((err) => {
         dispatch(userLoginAction(null, 'Invalid User Name and Password'));
+      });
+  };
+};
+
+//action for storing shopitem
+export const shopItemAction = (items) => {
+  return {
+    type: actionType.shopItem,
+    shopitems: items,
+  };
+};
+
+//action creator for fetching shop items
+export const asyncShopItemFetch = () => {
+  return (dispatch) => {
+    axios
+      .get('http://localhost:5000/api/v1/church/shopitems')
+      .then((res) => {
+        dispatch(shopItemAction(res.data.data));
+      })
+      .catch((err) => {
+        throw new Error();
+      });
+  };
+};
+
+//action for getting detail for shop items
+export const itemDetailAction = (itemdetail) => {
+  return {
+    type: actionType.itemDetail,
+    itemdetail: itemdetail,
+  };
+};
+
+//action creator for fetching shop item detail
+export const asyncItemDetailFetch = (itemid) => {
+  return (dispatch) => {
+    axios
+      .get(`http://localhost:5000/api/v1/church/shopitem/${itemid}`)
+      .then((res) => {
+        dispatch(itemDetailAction(res.data.data));
+      })
+      .catch((err) => {
+        throw new Error();
       });
   };
 };

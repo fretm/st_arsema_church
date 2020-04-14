@@ -52,7 +52,7 @@ const reducer = (state = initialState, action) => {
       return { ...state, loginForm: copyOfLoginForm };
     case actionType.login:
       return { ...state, user: action.user, loginMessage: action.loginMessage };
-    case actionType.setToken:
+    case actionType.setToken: // assigning the cookie token to the state
       const pair = document.cookie
         .split('; ')
         .find((x) => x.startsWith('churchtoken='));
@@ -61,8 +61,9 @@ const reducer = (state = initialState, action) => {
         return { ...state, user: user };
       }
       return { ...state };
-    // assigning the cookie token to the state
     case actionType.logout:
+      document.cookie =
+        'churchtoken= ; expires = Thu, 01 Jan 1970 00:00:00 GMT'; // delete cookie by assiging passed date
       return { ...state, user: null, loginMessage: null };
     default:
       return state;
