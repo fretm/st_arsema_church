@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class NavBar extends Component {
   render() {
@@ -72,10 +73,8 @@ class NavBar extends Component {
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/auth">
-                <i className="fas fa-user " aria-hidden="true">
-                  {' '}
-                  LOGIN
-                </i>
+                <i className="fas fa-user " aria-hidden="true"></i>{' '}
+                {!this.props.user ? <>LOGIN</> : <>LOGOUT</>}
               </Link>
             </li>
           </ul>
@@ -84,4 +83,10 @@ class NavBar extends Component {
     );
   }
 }
-export default NavBar;
+
+const mapStateToProps = (state) => {
+  return {
+    ...state.auth,
+  };
+};
+export default connect(mapStateToProps)(NavBar);

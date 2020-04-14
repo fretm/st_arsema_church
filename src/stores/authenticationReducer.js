@@ -32,6 +32,7 @@ const initialState = {
       isValid: true,
     },
   },
+
   loginMessage: null,
 };
 
@@ -52,8 +53,17 @@ const reducer = (state = initialState, action) => {
     case actionType.login:
       return { ...state, user: action.user, loginMessage: action.loginMessage };
     case actionType.setToken:
-      return { ...state, user: document.cookie.split('=')[1] }; // assigning the cookie token to the state
-
+      const pair = document.cookie
+        .split('; ')
+        .find((x) => x.startsWith('churchtoken='));
+      if (pair) {
+        const user = pair.split('=')[1];
+        return { ...state, user: user };
+      }
+      return { ...state };
+    // assigning the cookie token to the state
+    case actionType.logout:
+      return { ...state, user: null, loginMessage: null };
     default:
       return state;
   }

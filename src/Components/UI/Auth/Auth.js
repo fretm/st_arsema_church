@@ -73,6 +73,7 @@ const mapDispatchToProps = (dispatch) => {
       e.preventDefault();
       dispatch(actionCreator.asyncLoginAuthentication());
     },
+    onLogOutEventHandler: () => dispatch({ type: 'logout' }),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Auth);

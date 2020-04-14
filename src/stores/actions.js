@@ -47,13 +47,10 @@ export const asyncLoginAuthentication = () => {
         {
           email: email,
           password: password,
-        }
+        },
+        { withCredentials: true }
       )
       .then((res) => {
-        document.cookie = `churchtoken=${res.data.token};expires=${new Date(
-          Date.now() + 15 * 24 * 60 * 60 * 1000
-        )}`; // 15 days from now}
-        document.cookie = `churchToken=${res.data.token}`;
         dispatch(userLoginAction(res.data.token));
       })
       .catch((err) => {
