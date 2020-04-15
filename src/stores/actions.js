@@ -155,12 +155,10 @@ export const getUserCart = (cartlist) => {
 
 //action creator for fetching  user cart
 export function asyncgetUserCart() {
-  console.log('works fine');
   return (dispatch, getState) => {
-    const token = getState().auth.user;
     axios
       .get(
-        `http://localhost:5000/api/v1/church/cart/`,
+        'http://localhost:5000/api/v1/church/cart',
 
         {
           withCredentials: true,
@@ -168,7 +166,7 @@ export function asyncgetUserCart() {
       )
       .then((res) => {
         console.log(res, 'getuser cart');
-        // dispatch(getUserCart(res.data.data));
+        dispatch(getUserCart(res.data.data));
       })
       .catch((err) => {
         console.log(err);
@@ -205,7 +203,42 @@ export function asyncItemAddToCart(itemid) {
       )
       .then((res) => {
         console.log(res, 'hhhh');
-        asyncgetUserCart();
+        dispatch(addToCart(res.data.data));
+      })
+      .catch((err) => {
+        console.log(err);
+        throw new Error();
+      });
+  };
+}
+
+//action for  delete item from cart
+export const deleteItemFromCart = (cartlist) => {
+  return {
+    type: actionType.addtocart,
+    cartlist: cartlist,
+  };
+};
+
+//action creator for addToCart
+export function asyncDeleteItemFromCart(itemid) {
+  return (dispatch, getState) => {
+    const token = getState().auth.user;
+    axios
+      .delete(
+        `http://localhost:5000/api/v1/church/deletecartitem/` + itemid,
+
+        {
+          withCredentials: true,
+          headers: {
+            'content-type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+        dispatch(deleteItemFromCart(res.data.data));
       })
       .catch((err) => {
         console.log(err);

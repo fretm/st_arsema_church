@@ -10,6 +10,10 @@ export const itemDetail = 'itemDetail';
 export const addtocart = 'addtocart';
 
 export const userComment = 'userComment';
+export const submitBookEvent = 'submitBookEvent';
+
+//FT
+export const addBookInputEvent = 'addBookInputEvent';
 
 //SD
 export const FNAMECHANGE = 'fnamechange';

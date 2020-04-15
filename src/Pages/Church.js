@@ -12,11 +12,15 @@ import ChurchStore from '../Components/UI/ChurchStore/ChurchStore';
 import Login from '../Components/UI/Auth/Login';
 import ShopItemDetail from '../Components/UI/ChurchStore/ShopItemDetail';
 import SignUp from '../Components/UI/Auth/SignUp';
+import UserCart from '../Components/UI/ChurchStore/UserCart';
+import AddBook from '../Components/UI/Admin/AddBook';
 
 class Main extends Component {
+
   componentDidMount() {
     this.props.setTokenFromCookie();
   }
+  
   render() {
     return (
       <Fragment>
@@ -26,12 +30,17 @@ class Main extends Component {
           <Route path="/" exact component={MainBody} />
           <Route path="/store" exact component={ChurchStore} />
           <Route path="/itemdetail/:itemid" exact component={ShopItemDetail} />
-          {this.props.user && <Redirect from="/auth" to="/" />}
-          <Route path="/auth" exact component={Login} />
+          {this.props.user && <Route path="/cart" exact component={UserCart} />}
+          {this.props.user && <Redirect from="/login" to="/" />}
+          <Route path="/login" exact component={Login} />
           {!this.props.user && (
             <Route path="/signup" exact component={SignUp} />
           )}
           <Route path="/addbibleverse" exact component={ChurchStore} />
+
+          {/*  admins routes*/}
+
+          <Route path="/admin/addbook" exact component={AddBook} />
         </Switch>
         <Footer />
       </Fragment>

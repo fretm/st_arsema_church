@@ -12,6 +12,7 @@ import bibleVerseReducer from './stores/biblereducer';
 import authenticationReducer from './stores/authenticationReducer';
 import shopReducer from './stores/shopReducer';
 import makeAccountReducer from './stores/makeAccountReducer';
+import adminReducer from './stores/adminReducer';
 
 const logMiddleware = (store) => {
   return (next) => {
@@ -26,6 +27,7 @@ const rootReducer = combineReducers({
   auth: authenticationReducer,
   shop: shopReducer,
   mar: makeAccountReducer,
+  admin: adminReducer,
 });
 
 const store = createStore(rootReducer, applyMiddleware(logMiddleware, thunk));

@@ -187,3 +187,14 @@
 .checked {
   color: orange;
 }
+
+/* churchshop cards */
+.usercart .card {
+  background-color: transparent;
+  width: 20rem;
+  font-family: monospace;
+}
+.usercart img {
+  height: 20rem;
+  width: 15rem;
+}

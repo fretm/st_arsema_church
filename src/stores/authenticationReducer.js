@@ -2,6 +2,7 @@ import * as actionType from './actionType';
 
 const initialState = {
   user: null,
+
   loginForm: {
     email: {
       label: 'Email',
@@ -50,8 +51,9 @@ const reducer = (state = initialState, action) => {
       copyOfElement.elemConfig = copyOfElementConfig;
       copyOfLoginForm[action.insertedField] = copyOfElement;
       return { ...state, loginForm: copyOfLoginForm };
-    case actionType.login:
+    case actionType.login: //
       return { ...state, user: action.user, loginMessage: action.loginMessage };
+
     case actionType.setToken: // assigning the cookie token to the state
       const pair = document.cookie
         .split('; ')
@@ -61,9 +63,10 @@ const reducer = (state = initialState, action) => {
         return { ...state, user: user };
       }
       return { ...state };
+
     case actionType.logout:
       document.cookie =
-        'churchtoken= ; expires = Thu, 01 Jan 1970 00:00:00 GMT'; // delete cookie by assiging passed date
+        'churchtoken= ; expires = Thu, 01 Jan 1970 00:00:00 GMT'; // delete cookie by assiging passed date 
       return { ...state, user: null, loginMessage: null };
     default:
       return state;

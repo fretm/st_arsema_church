@@ -11,6 +11,7 @@ class NavBar extends Component {
     }
   }
   render() {
+    console.log(this.props);
     return (
       <nav className="navbar sticky-top navbar-light bg-light navbar-expand-lg">
         <Link className="navbar-brand" to="/">
@@ -34,6 +35,13 @@ class NavBar extends Component {
                 HOME <span className="sr-only">(current)</span>
               </Link>
             </li>
+            <li className="nav-item active">
+
+              <Link className="nav-link" to="/admin/addbook">
+                addbooks <span className="sr-only">(current)</span>
+              </Link>
+
+            </li>
             <li className="nav-item">
               <Link className="nav-link" to="/">
                 I'M NEW
@@ -45,7 +53,7 @@ class NavBar extends Component {
                 {this.props.user && (
                   <span className="badge badge-pill badge-light align-top">
                     {' '}
-                    0
+                    {this.props.usercart ? this.props.usercart.length : 0}
                   </span>
                 )}
               </Link>
@@ -86,7 +94,7 @@ class NavBar extends Component {
             </li>
             <li className="nav-item">
               {!this.props.user ? (
-                <Link className="nav-link" to="/auth">
+                <Link className="nav-link" to="/login">
                   <i className="fas fa-user " aria-hidden="true"></i> LOGIN
                 </Link>
               ) : (

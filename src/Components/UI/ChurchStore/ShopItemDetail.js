@@ -98,9 +98,9 @@ class ShopItemDetail extends Component {
                   </Link>
                 ) : (
                   <Link
-                    onClick={this.props.onItemAddToCart(
+                    onClick={()=>{this.props.onItemAddToCart(
                       this.props.match.params.itemid
-                    )}
+                    )}}
                   >
                     <h5>
                       <i className="fas fa-cart-plus"> buy</i>

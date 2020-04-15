@@ -19,10 +19,10 @@ const reducer = (state = initialState, action) => {
       };
       return { ...state, itemdetail: copyitemdetail };
     case actionType.addtocart:
-      const copyusercart = {
-        ...state.usercart,
-        usercart: [...action.usercart],
-      };
+      console.log(action);
+      const copyusercart = [...action.cartlist];
+      console.log(action.cartlist);
+      console.log(copyusercart);
       return { ...state, usercart: copyusercart };
     default:
       return state;

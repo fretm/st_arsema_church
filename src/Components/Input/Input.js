@@ -23,6 +23,16 @@ export default function Input(props) {
         />
       );
       break;
+    case 'number':
+      inputElem = (
+        <input
+          {...props.elemConfig}
+          onChange={(e) => {
+            props.onchangeHandler(e);
+          }}
+        />
+      );
+      break;
     case 'textarea':
       inputElem = (
         <textarea
