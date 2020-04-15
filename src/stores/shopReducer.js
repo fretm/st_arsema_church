@@ -12,6 +12,18 @@ const reducer = (state = initialState, action) => {
       return { ...state, shopitems: action.shopitems };
     case actionType.itemDetail:
       return { ...state, itemdetail: action.itemdetail };
+    case actionType.userComment:
+      const copyitemdetail = {
+        ...state.itemdetail,
+        comments: [...action.comment],
+      };
+      return { ...state, itemdetail: copyitemdetail };
+    case actionType.addtocart:
+      const copyusercart = {
+        ...state.usercart,
+        usercart: [...action.usercart],
+      };
+      return { ...state, usercart: copyusercart };
     default:
       return state;
   }

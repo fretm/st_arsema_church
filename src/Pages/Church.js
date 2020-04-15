@@ -9,8 +9,9 @@ import Footer from '../Components/UI/Footer';
 import * as actionType from '../stores/actionType';
 import MainBody from '../Components/UI/MainBody/MainBody';
 import ChurchStore from '../Components/UI/ChurchStore/ChurchStore';
-import Auth from '../Components/UI/Auth/Auth';
+import Login from '../Components/UI/Auth/Login';
 import ShopItemDetail from '../Components/UI/ChurchStore/ShopItemDetail';
+import SignUp from '../Components/UI/Auth/SignUp';
 
 class Main extends Component {
   componentDidMount() {
@@ -26,7 +27,10 @@ class Main extends Component {
           <Route path="/store" exact component={ChurchStore} />
           <Route path="/itemdetail/:itemid" exact component={ShopItemDetail} />
           {this.props.user && <Redirect from="/auth" to="/" />}
-          <Route path="/auth" exact component={Auth} />
+          <Route path="/auth" exact component={Login} />
+          {!this.props.user && (
+            <Route path="/signup" exact component={SignUp} />
+          )}
           <Route path="/addbibleverse" exact component={ChurchStore} />
         </Switch>
         <Footer />

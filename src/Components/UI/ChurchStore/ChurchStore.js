@@ -15,6 +15,12 @@ class ChurchStore extends Component {
     return (
       <div className="churchshop mt-3">
         <div className="container text-center">
+          <div className="conatiner float-right">
+            <Link to="/cart">
+              <i className="fas fa-shopping-cart fa-2x "> </i>
+            </Link>
+          </div>
+          <div className="clearfix"></div>
           <div className="card-columns">
             {this.props.shopitems.map((item) => (
               <Link to={`/itemdetail/${item._id}`} key={item._id}>

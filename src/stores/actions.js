@@ -95,7 +95,9 @@ export const itemDetailAction = (itemdetail) => {
 export const asyncItemDetailFetch = (itemid) => {
   return (dispatch) => {
     axios
-      .get(`http://localhost:5000/api/v1/church/shopitem/${itemid}`)
+      .get(`http://localhost:5000/api/v1/church/shopitem/${itemid}`, {
+        withCredentials: true,
+      })
       .then((res) => {
         dispatch(itemDetailAction(res.data.data));
       })
@@ -104,3 +106,110 @@ export const asyncItemDetailFetch = (itemid) => {
       });
   };
 };
+
+//action for  posting  shop item comments
+export const storeTheComment = (comment) => {
+  return {
+    type: actionType.userComment,
+    comment: comment,
+  };
+};
+
+//action creator for posting  shop item comments
+export const asyncSubmitComment = (comment, itemid) => {
+  return (dispatch, getState) => {
+    const token = getState().auth.user;
+    axios
+      .post(
+        `http://localhost:5000/api/v1/church/shopitemcomment/`,
+        {
+          itemid: itemid,
+          comment: comment,
+        },
+        {
+          withCredentials: true,
+          headers: {
+            'content-type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+        dispatch(storeTheComment(res.data.data));
+      })
+      .catch((err) => {
+        console.log(err);
+        throw new Error();
+      });
+  };
+};
+
+//action for  fetching  user cart
+export const getUserCart = (cartlist) => {
+  return {
+    type: actionType.addtocart,
+    cartlist: cartlist,
+  };
+};
+
+//action creator for fetching  user cart
+export function asyncgetUserCart() {
+  console.log('works fine');
+  return (dispatch, getState) => {
+    const token = getState().auth.user;
+    axios
+      .get(
+        `http://localhost:5000/api/v1/church/cart/`,
+
+        {
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        console.log(res, 'getuser cart');
+        // dispatch(getUserCart(res.data.data));
+      })
+      .catch((err) => {
+        console.log(err);
+        throw new Error();
+      });
+  };
+}
+
+//action for  addToCart shop item
+export const addToCart = (cartlist) => {
+  return {
+    type: actionType.addtocart,
+    cartlist: cartlist,
+  };
+};
+
+//action creator for addToCart
+export function asyncItemAddToCart(itemid) {
+  return (dispatch, getState) => {
+    const token = getState().auth.user;
+    axios
+      .post(
+        `http://localhost:5000/api/v1/church/addtocart/`,
+        {
+          productid: itemid,
+        },
+        {
+          withCredentials: true,
+          headers: {
+            'content-type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res, 'hhhh');
+        asyncgetUserCart();
+      })
+      .catch((err) => {
+        console.log(err);
+        throw new Error();
+      });
+  };
+}

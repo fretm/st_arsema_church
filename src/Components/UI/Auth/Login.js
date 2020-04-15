@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import * as actionCreator from '../../../stores/actions';
 import Input from '../../Input/Input';
+import { Link } from 'react-router-dom';
 
 class Auth extends Component {
   render() {
@@ -41,11 +42,13 @@ class Auth extends Component {
                         }}
                       />
                     ))}
-                    <hr />
+
                     <button type="submit" className="btn btn-primary">
                       login
                     </button>
                   </form>
+                  <hr />
+                  <Link to="/signup"> SignUp</Link>
                 </div>
               </div>
             </div>

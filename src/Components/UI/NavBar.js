@@ -2,7 +2,14 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import * as actionCreator from '../../stores/actions';
+
 class NavBar extends Component {
+  componentDidMount() {
+    if (this.props.user) {
+      this.props.onGetUserCart();
+    }
+  }
   render() {
     return (
       <nav className="navbar sticky-top navbar-light bg-light navbar-expand-lg">
@@ -35,6 +42,12 @@ class NavBar extends Component {
             <li className="nav-item">
               <Link className="nav-link" to="/store">
                 STORE
+                {this.props.user && (
+                  <span className="badge badge-pill badge-light align-top">
+                    {' '}
+                    0
+                  </span>
+                )}
               </Link>
             </li>
 
@@ -96,12 +109,14 @@ class NavBar extends Component {
 const mapStateToProps = (state) => {
   return {
     ...state.auth,
+    ...state.shop,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     onLogoutEventHandler: () => dispatch({ type: 'logout' }),
+    onGetUserCart: () => dispatch(actionCreator.asyncgetUserCart()),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
