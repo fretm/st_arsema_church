@@ -14,6 +14,8 @@ export const submitBookEvent = 'submitBookEvent';
 
 //FT
 export const addBookInputEvent = 'addBookInputEvent';
+export const addBook = 'addBook';
+export const bookAdded = 'bookAdded';
 
 //SD
 export const FNAMECHANGE = 'fnamechange';

@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import * as actionType from '../../../stores/actionType';
+import * as actionCreator from '../../../stores/actions';
+
 import Input from '../../Input/Input';
 
 class AddBook extends Component {
@@ -32,7 +34,13 @@ class AddBook extends Component {
               />
             ))}
 
-            <button type="submit" onClick={this.props.onsubmiteventhander} className="btn btn-primary mt-3">
+            <button
+              type="submit"
+              onClick={(event) => {
+                this.props.onsubmiteventhander(event);
+              }}
+              className="btn btn-primary mt-3"
+            >
               Addbook
             </button>
           </form>
@@ -53,7 +61,10 @@ const mapDispatchToProps = (dispatch) => {
     inputeventhandler: (event, id) =>
       dispatch({ type: actionType.addBookInputEvent, event: event, id: id }),
     //getting all the event and passing all the event to db
-    onsubmiteventhander: () => dispatch({ type: actionType.submitBookEvent }),
+    onsubmiteventhander: (event) => {
+      event.preventDefault();
+      dispatch(actionCreator.asyncAddBook());
+    },
   };
 };
 

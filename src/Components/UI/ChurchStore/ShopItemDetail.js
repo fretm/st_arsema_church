@@ -52,7 +52,7 @@ class ShopItemDetail extends Component {
             </div>
             <div className="col-md-8 col-sm-12 pl-4">
               <div className="row">
-                <h2>Book Title</h2>
+                <h2>{this.props.itemdetail.title}</h2>
               </div>
               <h4>
                 <small className="text-muted">Buy Now on:</small>
@@ -98,9 +98,11 @@ class ShopItemDetail extends Component {
                   </Link>
                 ) : (
                   <Link
-                    onClick={()=>{this.props.onItemAddToCart(
-                      this.props.match.params.itemid
-                    )}}
+                    onClick={() => {
+                      this.props.onItemAddToCart(
+                        this.props.match.params.itemid
+                      );
+                    }}
                   >
                     <h5>
                       <i className="fas fa-cart-plus"> buy</i>

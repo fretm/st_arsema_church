@@ -246,3 +246,79 @@ export function asyncDeleteItemFromCart(itemid) {
       });
   };
 }
+
+//FT
+//action for  adding book to the store
+export const addBook = () => {
+  return {
+    type: actionType.bookAdded,
+    productadd: 1,
+  };
+};
+
+export const asyncAddBook = () => {
+  return (dispatch, getState) => {
+    const title = getState().admin.addbookform.title.value;
+    const author = getState().admin.addbookform.author.value;
+    const price = getState().admin.addbookform.price.value;
+    const imageurl = getState().admin.addbookform.imageurl.value;
+    const description = getState().admin.addbookform.description.value;
+
+    const token = getState().auth.user; // get the authorization token
+
+    axios
+      .post(
+        'http://localhost:5000/api/v1/church/admin/addbook',
+        {
+          title: title,
+          author: author,
+          price: price,
+          imageurl: imageurl,
+          description: description,
+        },
+        {
+          withCredentials: true,
+          headers: {
+            'content-type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((res) => {
+        dispatch(addBook());
+      });
+  };
+};
+
+export const fetchAsync = () => {
+  return (dispatch) => {
+    axios
+      .get('http://localhost:5000/api/v1/church/admin/getbooks', {
+        withCredentials: true,
+      })
+      .then((res) => {
+        dispatch({ type: 'fetch', data: res.data.data });
+      });
+  };
+};
+
+export const fechsinglebook = (id) => {
+  return (dispatch) => {
+    axios
+      .get(`http://localhost:5000/api/v1/church/admin/getsingle/${id}`, {
+        withCredentials: true,
+      })
+      .then((res) => {
+        dispatch({ type: 'singlebook', sm: res.data.data });
+      });
+  };
+};
+
+export const deltesinglebook = (id) => {
+  console.log(id);
+  return (dispatch) => {
+    axios.delete(`http://localhost:5000/api/v1/church/admin/deletbook/${id}`, {
+      withCredentials: true,
+    });
+  };
+};

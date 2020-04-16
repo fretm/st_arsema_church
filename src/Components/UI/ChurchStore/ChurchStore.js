@@ -43,6 +43,7 @@ class ChurchStore extends Component {
 const mapStateToProps = (state) => {
   return {
     ...state.shop,
+    ...state.auth,
   };
 };
 

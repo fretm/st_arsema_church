@@ -39,6 +39,9 @@ const initalState = {
       className: 'form-control',
     },
   },
+  data:[],
+  productCount: 1,
+  book: [],
 };
 
 const reducer = (state = initalState, action) => {
@@ -52,26 +55,15 @@ const reducer = (state = initalState, action) => {
     return { ...state, addbookform: copyofaddbook };
   }
   // sending all my value using obj to my server to be created
-  if (action.type === actionType.submitBookEvent) {
-    console.log(state.count, 'check state data');
-    let obh = {
-      imageurl: state.addbookform.imageurl.value,
-      title: state.addbookform.title.value,
-      author: state.addbookform.author.value,
-      price: state.addbookform.price.value,
-      description: state.addbookform.description.value,
-    };
-
-    axios.post('/api/addbook', obh).then((res) => {
-      console.log(res);
-    });
-    //updating my state to add by one every time book is created
-    return {
-      ...state,
-      count: state.count + state.count + 1,
-    };
+  if (action.type == actionType.bookAdded) {
+    return { ...state, productCount: state.productCount + 1 };
   }
-
+  if (action.type == 'fetch') {
+    return { ...state, book: action.data };
+  }
+  if (action.type === 'singlebook') {
+    return { ...state, data: action.sm };
+  }
   return state;
 };
 
