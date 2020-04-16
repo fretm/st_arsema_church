@@ -6,7 +6,6 @@
 
 - React
 
-
 ## Technology Used backend
 
 - NodeJs
@@ -26,10 +25,8 @@
 ## Baic public api
 
 > get bible verses [https://eotcchurch.herokuapp.com/api/v1/church/bibleverses](https://eotcchurch.herokuapp.com/api/v1/church/bibleverses)
+
 > get single bible verse with id [https://eotcchurch.herokuapp.com/api/v1/church/bibleverse/2](https://eotcchurch.herokuapp.com/api/v1/church/bibleverse/2)
-
-
-
 
 ## Group Members
 
