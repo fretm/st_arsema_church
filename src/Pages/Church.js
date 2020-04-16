@@ -39,10 +39,12 @@ class Main extends Component {
           )}
           <Route path="/addbibleverse" exact component={ChurchStore} />
 
+          <Route path="/admin/books" exact component={Books} />
+
           {/*  admins routes*/}
 
           {this.props.role === 'admin' && (
-            <Route path="/admin/books" exact component={Books} />
+            <Route path="/admin/addbook" exact component={AddBook} />
           )}
           {this.props.role === 'admin' && (
             <Route path="/admin/addbook" exact component={AddBook} />
