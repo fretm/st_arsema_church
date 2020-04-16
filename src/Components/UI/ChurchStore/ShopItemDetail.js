@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import * as actionCreator from '../../../stores/actions';
-import bibleImg from '../../../assets/book1.jpg';
+
 import { Link } from 'react-router-dom';
 class ShopItemDetail extends Component {
   constructor(props) {
@@ -89,7 +89,14 @@ class ShopItemDetail extends Component {
                 <span className="fa fa-star checked"></span>
                 <span className="fa fa-star"></span>
               </div>
-              <div className="row pt-5 pl-3">
+              <div className="row pt-2">
+                <h5>
+                  <small className="text-muted">
+                    $ {this.props.itemdetail.price}
+                  </small>
+                </h5>
+              </div>
+              <div className="row pt-3 pl-3">
                 {!this.props.user ? (
                   <Link to="/login">
                     <h5>

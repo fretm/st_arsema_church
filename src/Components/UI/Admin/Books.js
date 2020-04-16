@@ -1,11 +1,8 @@
 import React from 'react';
-import axios from 'axios';
+
 import { connect } from 'react-redux';
 import { fetchAsync, deltesinglebook } from '../../../stores/actions';
 import { Link } from 'react-router-dom';
-
-import { BrowserRouter } from 'react-router-dom';
-import { Route } from 'react-router-dom';
 
 class Books extends React.Component {
   componentDidMount() {
@@ -16,7 +13,6 @@ class Books extends React.Component {
   deleteventHandler(event, id) {
     event.preventDefault();
     this.props.deltesinglebook1(id);
-    this.props.history.push('/admin/books/');
   }
 
   render() {
@@ -30,11 +26,15 @@ class Books extends React.Component {
               {/* //get all  the data from my listofbook reducer (state) and display it on th css card */}
 
               {this.props.admin.book.map((item) => (
-                <div className="card border-20" style={{ width: '18rem' }}>
+                <div
+                  key={item._id}
+                  className="card border-20"
+                  style={{ width: '18rem' }}
+                >
                   <img
                     className="card-img"
                     src={item.imageurl}
-                    alt="Card image cap"
+                    alt={item.title}
                   />
                   <div className="card-body text-center">
                     <h4>$ {item.price}</h4>

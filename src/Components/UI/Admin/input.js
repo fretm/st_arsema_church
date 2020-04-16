@@ -11,8 +11,9 @@ const input = (props) => {
         value={`${props.singledata.Name}`}
         onChange={(event) => {
           // getting the function from parent component
-          props.inputeventhandler1(event);
+          props.onchanged(event);
         }}
+        className="form-control"
       ></input>
     );
   }
@@ -21,8 +22,9 @@ const input = (props) => {
       <input
         value={`${props.singledata.imageurl}`}
         onChange={(event) => {
-          props.inputeventhandler1(event);
+          props.onchanged(event);
         }}
+        className="form-control"
       ></input>
     );
   }
@@ -31,8 +33,9 @@ const input = (props) => {
       <input
         value={`${props.singledata.author}`}
         onChange={(event) => {
-          props.inputeventhandler1(event);
+          props.onchanged(event);
         }}
+        className="form-control"
       ></input>
     );
   }
@@ -41,8 +44,9 @@ const input = (props) => {
       <input
         value={`${props.singledata.price}`}
         onChange={(event) => {
-          props.inputeventhandler1(event);
+          props.onchanged(event);
         }}
+        className="form-control"
       ></input>
     );
   }
@@ -52,8 +56,9 @@ const input = (props) => {
       <input
         value={`${props.singledata.title}`}
         onChange={(event) => {
-          props.inputeventhandler1(event);
+          props.onchanged(event);
         }}
+        className="form-control"
       ></input>
     );
   }
@@ -63,8 +68,9 @@ const input = (props) => {
       <textarea
         value={`${props.singledata.description}`}
         onChange={(event) => {
-          props.inputeventhandler(event);
+          props.onchanged(event);
         }}
+        className="form-control"
       ></textarea>
     );
   }
@@ -72,7 +78,8 @@ const input = (props) => {
   return (
     //displaying my lable and inputfiled
     <div>
-      {props.label} :{inputtype}
+      <label htmlFor=""> {props.label}</label>
+      {inputtype}
     </div>
   );
 };

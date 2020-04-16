@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import bookImg from '../../../assets/book1.jpg';
+
 import * as actionCreator from '../../../stores/actions';
 
 class ChurchStore extends Component {

@@ -2,12 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Input from './input';
 import { fechsinglebook } from '../../../stores/actions';
-import { Children } from 'react';
+
 
 class UpdateForm extends Component {
   componentDidMount() {
     //feching single book
     this.props.getonebookeventhandler(this.props.match.params.id);
+  }
+
+  updateHandler(event) {
+    event.preventDefault();
+    this.props.onupdateeventhander(this.props.match.params.id);
+    this.props.history.push('/admin/books');
   }
 
   render() {
@@ -23,31 +29,36 @@ class UpdateForm extends Component {
 
     return (
       <div>
-        {UpdateBookFormArray.map((item) => (
-          <Input
-            //passing all the item from state to child component
-            key={item.id}
-            singledata={this.props.data}
-            id={item.id}
-            label={item.configElem.lable}
-            type={item.configElem.type}
-            value={item.configElem.value}
-            // passing function that handle event handler
-            inputeventhandler1={(event) =>
-              this.props.inputeventhandler1(event, item.configElem.lable)
-            }
-          />
-        ))}
-        <div>
-          <br></br>
-          <hr />
-          <button
-            onClick={(id) => {
-              this.props.onupdateeventhander(this.props._id);
-            }}
-          >
-            update
-          </button>
+        <div className="container-fluid d-flex justify-content-center m-3">
+          <form>
+            {UpdateBookFormArray.map((item) => (
+              <Input
+                //passing all the item from state to child component
+                key={item.id}
+                singledata={this.props.data}
+                id={item.id}
+                label={item.configElem.lable}
+                type={item.configElem.type}
+                // passing function that handle event handler
+                onchanged={(event) =>
+                  this.props.inputeventhandler1(event, item.id)
+                }
+              />
+            ))}
+
+            <div>
+              <br></br>
+              <hr />
+              <button
+                className="btn btn-primary"
+                onClick={(event) => {
+                  this.updateHandler(event);
+                }}
+              >
+                update
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     );
@@ -55,7 +66,7 @@ class UpdateForm extends Component {
 }
 // Extracting Data with mapStateToProps
 const mapStateToProps = (state) => {
-  return { ...state.admin};
+  return { ...state.admin };
 };
 // created functions that dispatch when called,and pass those functions as props to my component.
 const mapDispatchToProps = (dispatch) => {
@@ -66,7 +77,9 @@ const mapDispatchToProps = (dispatch) => {
     //feching single book
     getonebookeventhandler: (id) => dispatch(fechsinglebook(id)),
     // function that handle my update button
-    onupdateeventhander: (id) => dispatch({ type: 'update', id: id }),
+    onupdateeventhander: (event, id) => {
+      dispatch({ type: 'updatebook', id: id });
+    },
   };
 };
 // connecting  a React component to a Redux store.

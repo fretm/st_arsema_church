@@ -39,7 +39,7 @@ const initalState = {
       className: 'form-control',
     },
   },
-  data:[],
+  data: [],
   productCount: 1,
   book: [],
 };
@@ -55,14 +55,49 @@ const reducer = (state = initalState, action) => {
     return { ...state, addbookform: copyofaddbook };
   }
   // sending all my value using obj to my server to be created
-  if (action.type == actionType.bookAdded) {
+  if (action.type === actionType.bookAdded) {
     return { ...state, productCount: state.productCount + 1 };
   }
-  if (action.type == 'fetch') {
+  if (action.type === 'fetch') {
     return { ...state, book: action.data };
   }
   if (action.type === 'singlebook') {
     return { ...state, data: action.sm };
+  }
+  if (action.type === 'inputevent1') {
+    const copyofdata = { ...state.data };
+    copyofdata[action.id] = action.event.target.value;
+    return { ...state, data: copyofdata };
+  }
+
+  if (action.type === 'deleteSingleBook') {
+    return {
+      ...state,
+      book: state.book.filter((item) => item._id !== action.id),
+    };
+  }
+  //sending updated value to my server
+  if (action.type === 'updatebook') {
+    let id = state.data._id;
+    let obj = {
+      imageurl: state.data.imageurl,
+      title: state.data.title,
+      author: state.data.author,
+      price: state.data.price,
+      description: state.data.description,
+    };
+    
+    axios
+      .put(`https://eotcchurch.herokuapp.com/api/v1/church/admin/updatebook/${id}`, obj, {
+        withCredentials: true,
+        headers: {
+          'content-type': 'application/json',
+        },
+      })
+      .then((res) => {
+        return state;
+      });
+    return state;
   }
   return state;
 };

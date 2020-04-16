@@ -12,10 +12,10 @@ export const bibleVerseAction = (verse) => {
 
 //action creator for fetching bible verse
 export const asyncVerseFetch = () => {
-  let versenumber = Math.ceil(Math.random() * 20);
+  let versenumber = Math.ceil(Math.random() * 18 + 1);
   return (dispatch) => {
     axios
-      .get('http://localhost:5000/api/v1/church/bibleverses', {
+      .get('https://eotcchurch.herokuapp.com/api/v1/church/bibleverses', {
         withCredentials: true,
       })
       .then((res) => {
@@ -45,7 +45,7 @@ export const asyncLoginAuthentication = () => {
 
     axios
       .post(
-        'http://localhost:5000/api/v1/church/login',
+        'https://eotcchurch.herokuapp.com/api/v1/church/login',
 
         {
           email: email,
@@ -76,7 +76,7 @@ export const shopItemAction = (items) => {
 export const asyncShopItemFetch = () => {
   return (dispatch) => {
     axios
-      .get('http://localhost:5000/api/v1/church/shopitems')
+      .get('https://eotcchurch.herokuapp.com/api/v1/church/shopitems')
       .then((res) => {
         dispatch(shopItemAction(res.data.data));
       })
@@ -98,9 +98,12 @@ export const itemDetailAction = (itemdetail) => {
 export const asyncItemDetailFetch = (itemid) => {
   return (dispatch) => {
     axios
-      .get(`http://localhost:5000/api/v1/church/shopitem/${itemid}`, {
-        withCredentials: true,
-      })
+      .get(
+        `https://eotcchurch.herokuapp.com/api/v1/church/shopitem/${itemid}`,
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         dispatch(itemDetailAction(res.data.data));
       })
@@ -124,7 +127,7 @@ export const asyncSubmitComment = (comment, itemid) => {
     const token = getState().auth.user;
     axios
       .post(
-        `http://localhost:5000/api/v1/church/shopitemcomment/`,
+        `https://eotcchurch.herokuapp.com/api/v1/church/shopitemcomment/`,
         {
           itemid: itemid,
           comment: comment,
@@ -161,7 +164,7 @@ export function asyncgetUserCart() {
   return (dispatch, getState) => {
     axios
       .get(
-        'http://localhost:5000/api/v1/church/cart',
+        'https://eotcchurch.herokuapp.com/api/v1/church/cart',
 
         {
           withCredentials: true,
@@ -192,7 +195,7 @@ export function asyncItemAddToCart(itemid) {
     const token = getState().auth.user;
     axios
       .post(
-        `http://localhost:5000/api/v1/church/addtocart/`,
+        `https://eotcchurch.herokuapp.com/api/v1/church/addtocart/`,
         {
           productid: itemid,
         },
@@ -229,7 +232,8 @@ export function asyncDeleteItemFromCart(itemid) {
     const token = getState().auth.user;
     axios
       .delete(
-        `http://localhost:5000/api/v1/church/deletecartitem/` + itemid,
+        `https://eotcchurch.herokuapp.com/api/v1/church/deletecartitem/` +
+          itemid,
 
         {
           withCredentials: true,
@@ -271,7 +275,7 @@ export const asyncAddBook = () => {
 
     axios
       .post(
-        'http://localhost:5000/api/v1/church/admin/addbook',
+        'https://eotcchurch.herokuapp.com/api/v1/church/admin/addbook',
         {
           title: title,
           author: author,
@@ -296,7 +300,7 @@ export const asyncAddBook = () => {
 export const fetchAsync = () => {
   return (dispatch) => {
     axios
-      .get('http://localhost:5000/api/v1/church/admin/getbooks', {
+      .get('https://eotcchurch.herokuapp.com/api/v1/church/admin/getbooks', {
         withCredentials: true,
       })
       .then((res) => {
@@ -308,9 +312,12 @@ export const fetchAsync = () => {
 export const fechsinglebook = (id) => {
   return (dispatch) => {
     axios
-      .get(`http://localhost:5000/api/v1/church/admin/getsingle/${id}`, {
-        withCredentials: true,
-      })
+      .get(
+        `https://eotcchurch.herokuapp.com/api/v1/church/admin/getsingle/${id}`,
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         dispatch({ type: 'singlebook', sm: res.data.data });
       });
@@ -321,11 +328,14 @@ export const deltesinglebook = (id) => {
   console.log(id);
   return (dispatch) => {
     axios
-      .delete(`http://localhost:5000/api/v1/church/admin/deletbook/${id}`, {
-        withCredentials: true,
-      })
+      .delete(
+        `https://eotcchurch.herokuapp.com/api/v1/church/admin/deletbook/${id}`,
+        {
+          withCredentials: true,
+        }
+      )
       .then((result) => {
-        dispatch(addBook(-1));
+        dispatch({ type: 'deleteSingleBook', id: id });
       });
   };
 };
