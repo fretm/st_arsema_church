@@ -18,7 +18,6 @@ import Books from '../Components/UI/Admin/Books';
 import UpdateBook from '../Components/UI/Admin/UpdateBook';
 
 class Main extends Component {
-
   componentDidMount() {
     this.props.setTokenFromCookie();
   }
@@ -40,13 +39,18 @@ class Main extends Component {
           )}
           <Route path="/addbibleverse" exact component={ChurchStore} />
 
-          <Route path="/admin/books" exact component={Books} />
-
           {/*  admins routes*/}
 
-          <Route path="/admin/addbook" exact component={AddBook} />
-          <Route path="/admin/update/:id" exact component={UpdateBook} />
-          
+          {this.props.role === 'admin' && (
+            <Route path="/admin/books" exact component={Books} />
+          )}
+          {this.props.role === 'admin' && (
+            <Route path="/admin/addbook" exact component={AddBook} />
+          )}
+          {this.props.role === 'admin' && (
+            <Route path="/admin/update/:id" exact component={UpdateBook} />
+          )}
+          <Redirect from="*" to="/login" />
         </Switch>
         <Footer />
       </Fragment>

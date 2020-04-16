@@ -35,6 +35,7 @@ const initialState = {
   },
 
   loginMessage: null,
+  role: 'user',
 };
 
 const reducer = (state = initialState, action) => {
@@ -52,7 +53,12 @@ const reducer = (state = initialState, action) => {
       copyOfLoginForm[action.insertedField] = copyOfElement;
       return { ...state, loginForm: copyOfLoginForm };
     case actionType.login: //
-      return { ...state, user: action.user, loginMessage: action.loginMessage };
+      return {
+        ...state,
+        user: action.user,
+        loginMessage: action.loginMessage,
+        role: action.role,
+      };
 
     case actionType.setToken: // assigning the cookie token to the state
       const pair = document.cookie
@@ -66,8 +72,8 @@ const reducer = (state = initialState, action) => {
 
     case actionType.logout:
       document.cookie =
-        'churchtoken= ; expires = Thu, 01 Jan 1970 00:00:00 GMT'; // delete cookie by assiging passed date 
-      return { ...state, user: null, loginMessage: null };
+        'churchtoken= ; expires = Thu, 01 Jan 1970 00:00:00 GMT'; // delete cookie by assiging passed date
+      return { ...state, user: null, loginMessage: null, role: 'user' };
     default:
       return state;
   }

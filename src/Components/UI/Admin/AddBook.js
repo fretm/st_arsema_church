@@ -8,6 +8,12 @@ import * as actionCreator from '../../../stores/actions';
 import Input from '../../Input/Input';
 
 class AddBook extends Component {
+  submiteventhander(event) {
+    event.preventDefault();
+    this.props.onsubmiteventhander();
+    this.props.history.push('/admin/books');
+  }
+
   render() {
     console.log(this.props);
     //pushing all form from my state  to an array  to esily pass it to child component
@@ -37,7 +43,7 @@ class AddBook extends Component {
             <button
               type="submit"
               onClick={(event) => {
-                this.props.onsubmiteventhander(event);
+                this.submiteventhander(event);
               }}
               className="btn btn-primary mt-3"
             >
@@ -61,8 +67,7 @@ const mapDispatchToProps = (dispatch) => {
     inputeventhandler: (event, id) =>
       dispatch({ type: actionType.addBookInputEvent, event: event, id: id }),
     //getting all the event and passing all the event to db
-    onsubmiteventhander: (event) => {
-      event.preventDefault();
+    onsubmiteventhander: () => {
       dispatch(actionCreator.asyncAddBook());
     },
   };

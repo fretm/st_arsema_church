@@ -13,6 +13,12 @@ class Books extends React.Component {
     this.props.getallbook();
   }
 
+  deleteventHandler(event, id) {
+    event.preventDefault();
+    this.props.deltesinglebook1(id);
+    this.props.history.push('/admin/books/');
+  }
+
   render() {
     console.log(this.props);
     return (
@@ -31,7 +37,7 @@ class Books extends React.Component {
                     alt="Card image cap"
                   />
                   <div className="card-body text-center">
-                    <h4>{item.price}$</h4>
+                    <h4>$ {item.price}</h4>
                   </div>
                   {/* link , id - is there to let me  fech specific book  */}
                   <Link to={`/admin/update/${item._id}`}> edit </Link>
@@ -40,8 +46,8 @@ class Books extends React.Component {
 
                   {/* gets the id of each item from the list of the loop and fech from db and delets  */}
                   <button
-                    onClick={(id) => {
-                      this.props.deltesinglebook1(item._id);
+                    onClick={(event) => {
+                      this.deleteventHandler(event, item._id);
                     }}
                     className="primary btn-sm"
                   >

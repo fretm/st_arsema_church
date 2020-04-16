@@ -28,11 +28,12 @@ export const asyncVerseFetch = () => {
 };
 
 //action for user authentication
-export const userLoginAction = (user, loginMessage) => {
+export const userLoginAction = (user, loginMessage, role) => {
   return {
     type: actionType.login,
     user: user,
     loginMessage: loginMessage,
+    role: role,
   };
 };
 
@@ -53,10 +54,12 @@ export const asyncLoginAuthentication = () => {
         { withCredentials: true }
       )
       .then((res) => {
-        dispatch(userLoginAction(res.data.token));
+        dispatch(userLoginAction(res.data.token, null, res.data.role));
       })
       .catch((err) => {
-        dispatch(userLoginAction(null, 'Invalid User Name and Password'));
+        dispatch(
+          userLoginAction(null, 'Invalid User Name and Password', 'user')
+        );
       });
   };
 };
@@ -249,10 +252,10 @@ export function asyncDeleteItemFromCart(itemid) {
 
 //FT
 //action for  adding book to the store
-export const addBook = () => {
+export const addBook = (count) => {
   return {
     type: actionType.bookAdded,
-    productadd: 1,
+    productadd: count,
   };
 };
 
@@ -285,7 +288,7 @@ export const asyncAddBook = () => {
         }
       )
       .then((res) => {
-        dispatch(addBook());
+        dispatch(addBook(1));
       });
   };
 };
@@ -317,8 +320,12 @@ export const fechsinglebook = (id) => {
 export const deltesinglebook = (id) => {
   console.log(id);
   return (dispatch) => {
-    axios.delete(`http://localhost:5000/api/v1/church/admin/deletbook/${id}`, {
-      withCredentials: true,
-    });
+    axios
+      .delete(`http://localhost:5000/api/v1/church/admin/deletbook/${id}`, {
+        withCredentials: true,
+      })
+      .then((result) => {
+        dispatch(addBook(-1));
+      });
   };
 };
