@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import NavBar from '../Components/UI/NavBar';
 import Header from '../Components/UI/Headers/Header';
 import Footer from '../Components/UI/Footer';
+
 import AsyncComponent from '../Components/Hoc/AsyncComponent';
 
 import * as actionType from '../stores/actionType';
@@ -13,7 +14,7 @@ import ChurchStore from '../Components/UI/ChurchStore/ChurchStore';
 import Login from '../Components/UI/Auth/Login';
 import ShopItemDetail from '../Components/UI/ChurchStore/ShopItemDetail';
 import SignUp from '../Components/UI/Auth/SignUp';
-// import UserCart from '../Components/UI/ChurchStore/UserCart';
+//import UserCart from '../Components/UI/ChurchStore/UserCart';
 import AddBook from '../Components/UI/Admin/AddBook';
 import Books from '../Components/UI/Admin/Books';
 // import UpdateBook from '../Components/UI/Admin/UpdateBook';
@@ -64,6 +65,7 @@ class Main extends Component {
           {this.props.role === 'admin' && (
             <Route path="/admin/update/:id" exact component={AsyncUpdateBook} />
           )}
+          
           <Redirect from="*" to="/login" />
         </Switch>
         <Footer />
