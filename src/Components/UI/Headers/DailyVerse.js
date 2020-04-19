@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
-import bibleImg from '../../../assets/dailyverse.jpg';
-import * as actionCreator from '../../../stores/actions';
+import bibleImg from "../../../assets/starsema.jpg";
+import * as actionCreator from "../../../stores/actions";
 
 class DailyVerse extends Component {
   //fetching the bibleverses and store it on the redux state
@@ -18,10 +18,23 @@ class DailyVerse extends Component {
               <div className="col-md-4">
                 <img src={bibleImg} className="card-img" alt="..." />
               </div>
-              <div className="col-md-8">
-                <div className="card-body">
-                  <h5 className="card-title text-center">Daily verses</h5>
-                  <p className="card-text text-center">
+              <div className="col-md-8 ">
+                <div className="card-body ">
+                  <h5 className="card-title text-center ">ግጻዌ ሚያዚያ</h5>
+
+                  <p className="text-muted pl-3 m-0">መልእክታት</p>
+                  <p className="pl-5 mb-0">ወደ ቆላስያስ ሰዎች ምዕራፍ ፩ ከቁጥር ፲፰-፳፫</p>
+                  <p className="pl-5 pt-0">የጴጥሮስ መልእክት ፩ ምዕራፍ ፪ ከቁጥር ፲፫-፲፭</p>
+
+                  <p className="text-muted pl-3  m-0">የሐዋርያት ሥራ</p>
+                  <p className="pl-5 pt-0  m-0"> የሐዋርያት ሥራ ምዕራፍ ፳፬ ከቁጥር ፬-፮</p>
+                  <p className="text-muted pl-3  m-0">ምስባክ</p>
+                  <p className="pl-5 pt-0  m-0">መዝሙረ ዳዊት ምዕራፍ ፶፰</p>
+                  <p className="text-muted pl-3 m-0">ወንጌል</p>
+                  <p className="pl-5 pt-0  m-0">የሉቃስ ወንጌል ምዕራፍ ፳፪ ከቁጥር ፵፰-፶፩</p>
+                  <p className="text-muted pl-3  m-0">ቅዳሴ</p>
+                  <p className="pl-5 pt-0  m-0">ቅዳሴ ባስልዮስ</p>
+                  {/* <p className="card-text text-center">
                     {this.props.bibleverse.text}
                   </p>
                   <div className="card-text float-right">
@@ -30,7 +43,7 @@ class DailyVerse extends Component {
                         <cite> {this.props.bibleverse.verse}</cite>
                       </footer>
                     </blockquote>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

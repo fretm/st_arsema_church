@@ -1,9 +1,9 @@
 .banner {
   width: 100%;
   height: 45vmin;
-  background: url('../src//assets/nav.jpg');
-  background-position: -24rem -19rem;
-  background-size: 150%;
+  background: url("../src//assets/palmsunday.jpg");
+  background-position: 0rem -10rem;
+  background-size: 100%;
   position: relative;
 }
 .banner .content {
@@ -24,7 +24,7 @@
 .servicebanner {
   width: 100%;
   height: 25vmin;
-  background: url('../src//assets/crosssign.jpg');
+  background: url("../src//assets/crosssign.jpg");
   background-position: -24rem -55rem;
   background-size: 150%;
   position: relative;
