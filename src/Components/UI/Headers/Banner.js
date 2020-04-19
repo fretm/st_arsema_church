@@ -1,15 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class Banner extends Component {
   render() {
     return (
       <div className="banner">
         <div className="content text-center">
-          <h1>YOU BELONG HERE</h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque,
-            ipsam.
-          </p>
+          <h1>ቅድስት አርሴማ ወ ክርስቶስ ሰምራ</h1>
+          <p>“ኢትዮጵያ ታበጽሕ እደዊሃ ኃበ እግዚአብሔር" መዝ67፤31</p>
         </div>
       </div>
     );

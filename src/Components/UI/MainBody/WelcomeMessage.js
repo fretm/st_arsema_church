@@ -7,7 +7,7 @@ class WelcomeMessage extends Component {
         <div className=" container-fluid text-center mt-5">
           <div className="row">
             <div className="col-md-12 col-sm-6">
-              <h6>welcome Home </h6>
+              <h6>እንኳን በደኅና መጡ </h6>
               <p>
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta
                 illo sequi necessitatibus. Aperiam iure, aliquid quos doloremque
